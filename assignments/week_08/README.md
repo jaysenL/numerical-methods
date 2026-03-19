@@ -1,6 +1,6 @@
 # Week 7: Numerical Linear Algebra
 
-**Due:** March 27, 2026
+**Due:** March 30, 2026
 
 In previous weeks, you have largely worked in Python notebooks with functions imported from libraries. This week, we're going to get our hands dirty and write some numerical methods code ourselves. In your calculus courses, you have probably learned about techniques for integrating functions that can't be integrated analytically, such as the trapezoidal rule and Simpson's rule. 
 
