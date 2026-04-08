@@ -2,14 +2,60 @@
 # this module will contain functions for numerical integration
 
 
-def trapezoidal_rule():
-    #write the arguments, docstring, and actual code of this function
+def trapezoidal_rule(f, a, b, N):
+    """Approximate the integral of f from a to b using the trapezoidal rule.
 
-    return
+    Parameters
+    ----------
+    f : callable
+        Function to integrate. It should accept a scalar input and return a float.
+    a : float
+        Lower limit of integration.
+    b : float
+        Upper limit of integration.
+    N : int
+        Number of slices to divide the interval into.
+
+    Returns
+    -------
+    float
+        Approximate value of the integral.
+    """
+    h = (b - a) / N
+    total = 0.5 * f(a) + 0.5 * f(b)
+    for i in range(1, N):
+        x = a + i * h
+        total += f(x)
+    return total * h
 
 
+def simpsons_rule(f, a, b, N):
+    """Approximate the integral of f from a to b using Simpson's rule.
 
-def simpsons_rule():
-    #write the arguments, docstring, and actual code of this function
+    Parameters
+    ----------
+    f : callable
+        Function to integrate. It should accept a scalar input and return a float.
+    a : float
+        Lower limit of integration.
+    b : float
+        Upper limit of integration.
+    N : int
+        Number of slices to divide the interval into. Must be even.
 
-    return
+    Returns
+    -------
+    float
+        Approximate value of the integral.
+    """
+    if N % 2 != 0:
+        raise ValueError("N must be even for Simpson's rule")
+    h = (b - a) / N
+    total = f(a) + f(b)
+
+    for i in range(1, N):
+        x = a + i * h
+        weight = 4 if i % 2 != 0 else 2
+        total += weight * f(x)
+
+    return total * h / 3
